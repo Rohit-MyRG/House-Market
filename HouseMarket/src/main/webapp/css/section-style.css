@@ -1,0 +1,195 @@
+		
+section{
+    text-align: center;
+    padding-top: 100px;
+}
+
+section .top-form-control{
+    padding: 6px;
+    font-size: 15px;
+    border: 1px solid rgb(196, 196, 196);
+    width: 100%;
+}
+section .form-control{
+    padding: 15px;
+    font-size: 17px;
+    border: none;
+    width: 100%;
+    vertical-align:baseline;
+}
+
+section table{
+    border: 1px solid rgb(196, 196, 196);
+    width: 73%;
+    background-color: #f1eeee;
+    margin-top: 60px;
+    /*visibility: hidden;*/
+}
+table input[type=text] {
+    margin-left: 0px;
+    display: inline;
+    width: 92%;
+    padding-left: 0px;
+    outline: none;
+}
+table img{
+    background-color: white;
+    margin-left: 4px;
+    height: 25px;
+    /*line-height: ;*/
+    width: 4%;
+    display: inline;
+}
+table button[type=submit] {
+    background-color: red;
+    color: azure;
+    margin-right: -5px;
+    font-size: 100%;
+}
+section table input[type=radio]{
+    padding: 0px;
+    margin: 6px;
+}
+#inputDistrict{
+    padding: 15px;
+    margin: -1px;
+    outline: none;
+}
+section table .search{
+    width: 60%;
+    border-left: 1px solid rgb(196, 196, 196);
+    border-top: 1px solid rgb(196, 196, 196);
+    background-color: white;
+    text-align: left;
+}
+section table .submit{
+    width: 15%;
+}
+section table .top-row{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+}
+section h1{
+    padding: 0 2px;
+    background: linear-gradient(to right,red, yellow);
+    display: inline;
+    font-size: larger;
+    color:darkblue;
+}
+section .hh4{
+    margin-top:  calc(15vh);;
+    color:whitesmoke;
+}
+section table{  /* at the first time of page loading we hide the all input fields table*/
+    display:none;
+}
+#search-btn{ /* this is a text field, it just for showing all input fields after clicked on this text field*/
+    width: 250px;
+    display: block;
+    padding: 10px 10px 10px 15px;
+    margin-top: 140px;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 20px;
+    font-size: 15px;
+    outline: none;
+}
+@media (max-width: 986px){
+    section table .table-display, td{
+        display: block;
+        padding: 10px;
+        text-align: center;
+    }
+    section{
+        padding-top: 10px;
+    }
+    section table{
+        width: 80%;
+        background-color: white;
+        margin: 0px;
+        border: none;
+       
+    }
+    section table .search{
+        width: 95%;
+        margin: 10px;
+        border: 1px solid rgb(196, 196, 196);
+    }
+    section table .submit{
+        width: 100%;
+    }
+    section .top-row, .district, .search, .submit{
+        margin-top: 15px;
+    }
+    #inputDistrict{
+        border: 1px solid rgb(196, 196, 196);
+        font-size: 15px;
+        padding: 8px;
+    }
+    table button[type=submit] {
+        vertical-align: bottom;
+        padding: 10px 0 10px 0;
+        border: 1px solid 0E9FB0;
+        background: #0E9FB0;
+        font-size: 140%;
+    }
+    table input[type=text] {
+        padding: 0px;
+        font-size: 15px;
+    }
+    section table input[type=radio]{
+    	padding: 0px;
+    	margin-left: 40px;
+    }
+    section .district{
+    	border-top: 1px solid blue;
+    	padding-top: 15px;
+    	margin-top: 10px;
+    }
+    section h1{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 19px;
+        background: #FF0000;
+        background: -webkit-linear-gradient(to right, #FF0000 0%, #FF36DD 50%, #FFFB00 100%);
+        background: -moz-linear-gradient(to right, #FF0000 0%, #FF36DD 50%, #FFFB00 100%);
+        background: linear-gradient(to right, #FF0000 0%, #FF36DD 50%, #FFFB00 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    section h2{
+        margin-top: 50px;
+        color: white;
+        font-size: 20px;
+    }
+    table img{
+        height: 18px;
+    }
+    section .hh4{
+        margin-top:  calc(15vh);;
+        color:cornflowerblue;
+    }
+}
+@media (max-width: 979px){
+	section table{
+		width: 90%;
+        border-radius: 10px;
+	}
+	section table input[type=radio]{
+		margin-left: 7px;
+	}
+    
+}
+
+/*
+input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  /* When the input field gets focus, change its width to 100% 
+  input[type=text]:focus {
+    width: 100%;
+  }
+  */
