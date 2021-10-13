@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" 
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,21 +11,17 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCfPDOMlQ_bU56XJIuyMvgqgsUdk9PxxiA"></script>
 	
-	<style type="text/css">
-  		<%@include file="css/navbar.css" %>
-  		<%@include file="css/section-style.css" %>
-	</style>
-    <script type="text/javascript">
-    	<%@include file="js/stateDist.js" %>
-    </script>
+	<link rel="stylesheet" type="text/css" href="css/navbar.css" />
+	<link rel="stylesheet" type="text/css" href="css/section-style.css" />
+    <script type="text/javascript" src="js/stateDist.js"> </script>
 	<script>
-		var searchInput = 'inputAddress';
+		/* var searchInput = 'inputAddress';
 		$(document).ready(function (){
 			var autocomplete;
 			autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)),{
 				types:['geocode']
 			});
-		});
+		}); */
 
 	/*this JS code shows the input fields table*/
 		function show_search(){ 
@@ -32,6 +30,19 @@
 			document.getElementById("search-btn").style.display="none";
 		}
 	</script>
+	<style>
+	@media (max-width: 986px){
+		nav ul{
+			background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("images/House3.jpg") no-repeat;
+			background-size: cover;
+		}
+		section{
+			background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('images/House2.jpg') no-repeat; 
+			background-size: cover;
+			height: calc(100vh - 45px);
+		}
+	}
+	</style>
 </head>
 <body>
     <nav> <!-- Nav bar starts here-->
@@ -50,10 +61,10 @@
     </nav> <!--navbar ends here-->
 	
 	<section>	<!--Section starts here-->
-		 <h1>India's No.1 trustable and free property site</h1>
+		 <h1>India's No.1 trustable and free property site</h1><br/>
 		 
 	<form>
-	<center>	<!--Search properties design starts here-->
+		<!--Search properties design starts here-->
         <div class="border-div">
 		<table id="search-table">
 			<caption style="padding-bottom: 2px; color: aqua;"><h2>Search best & suitable house in your area</h2></caption>
@@ -131,6 +142,7 @@
 		  	</td><td class="search in-search-field" colspan="2">
 				  <!--icon of location-->
 				  <img class="location-icon" src="https://1.bp.blogspot.com/-TgJlthlK1mo/YS0NTWr7HyI/AAAAAAAAAPU/IOt0YSnur3Mf1jeivn2J7sh4KsmG5fsrACLcBGAsYHQ/s0/location.png" alt="">
+				 
 				 <!--this is main input text field which read the address-->
 				  <input type="text" id="inputAddress" class="form-control input-field in-search-field" placeholder="Search localities or landmark..">
 			</td><td class="submit in-field">
@@ -139,15 +151,17 @@
 			</td>
 		</tr>
 	</table>
+	<center>
 	<!--this text field is just for showing all above input fields after clicked on the text field-->
-	<input type="text" id="search-btn" onclick="show_search()" placeholder="Search localities or landmark...">
+	<input type="text" id="search-btn" onclick="show_search()" placeholder="Search property...">
 	<!--this JS code is for blinking the placeholder value of search-btn text field-->
 	<script type="text/javascript">
 		var blink = document.getElementById('search-btn');
-		setInterval(function() { blink.placeholder = (blink.placeholder == "" ? "Search localities or landmark..." : ""); }, 450);
+		setInterval(function() { blink.placeholder = (blink.placeholder == "" ? "Search Home/Flat/Room/Shop..." : ""); }, 450);
 	  </script>
+	  </center>
 </div>
-	</center> <!--Search properties design ends here-->
+	 <!--Search properties design ends here-->
   </form>
   <!--Search form ends here-->
   <h4 class="hh4">Are you a property owner?</h4>
