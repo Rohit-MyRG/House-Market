@@ -9,7 +9,7 @@
 	<title>House Market</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCfPDOMlQ_bU56XJIuyMvgqgsUdk9PxxiA"></script>
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCfPDOMlQ_bU56XJIuyMvgqgsUdk9PxxiA"></script> -->
 	
 	<link rel="stylesheet" type="text/css" href="css/navbar.css" />
 	<link rel="stylesheet" type="text/css" href="css/section-style.css" />
@@ -54,12 +54,12 @@
 		<ul>
 			<li><a href="index.html">Home</a></li>
 			<li><a href="AddProperty.html">For Property Owners</a></li>
-			<li><a href="login.html">Login | Sign up</a></li>
+			<li><a href="">Login | Sign up</a></li>
 			<li><a href="#">About</a></li>
 			<li><a href="#">Feedback</a></li>
 		</ul>
     </nav> <!--navbar ends here-->
-	
+    
 	<section>	<!--Section starts here-->
 		 <h1>India's No.1 trustable and free property site</h1><br/>
 		 

@@ -9,7 +9,6 @@
 }
 body{
 	font-family: 'Poppins', sans-serif;
-	text-align:center;
 }
 section{
 	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)),url("https://1.bp.blogspot.com/-AemUOh4Sens/YSUVKSQGCuI/AAAAAAAAAPE/Imwmq1_w6mwsQK3OtPjUkbLPpfIXArtvgCLcBGAsYHQ/s0/HomeHouse.jpg");
@@ -24,6 +23,7 @@ nav{
 background: hsl(207, 97%, 45%);
 height: 45px;
 width: 100%;
+text-align:left;
 }
 nav label.logo{
 color: white;
@@ -55,7 +55,7 @@ background: #323c4e;
  nav label.checkbtn{
 font-size: 30px;
 color: white;
-float: left;
+float: right;
 line-height: 45px;
 margin-left: 20px;
 cursor: pointer;
