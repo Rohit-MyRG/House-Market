@@ -15,7 +15,7 @@
 	
 </head>
 <body> <!-- ############################################################################# -->
-    <nav> <!-- Nav bar starts here-->
+    <nav id="nav1"> <!-- Nav bar starts here-->
 		<input type="checkbox" id="check" onclick="ShowHideDiv(this)">
 		<label for="check" class="checkbtn">
 			<i class="fas fa-bars"></i>
@@ -52,9 +52,15 @@
 		}
 	</style>
 	<script type="text/javascript">
+		/* This function is helps to hide login form and show "nav ul" when "nav checkbtn" is checked
+		else show login form and left:-100% "nav ul"*/
+	
     	function ShowHideDiv(chkNav) {
-	        var sec1 = document.getElementById("loginForm");
-        	sec1.style.display = chkNav.checked ? "none" : "block";
+			if(document.getElementById("nav1").offsetWidth<=986){
+		        var sec1 = document.getElementById("loginForm");
+		        var ans = chkNav.checked ? "none" : "block";
+		        setTimeout(() => { sec1.style.display = ans }, 100);
+			}
     	}
 	</script>
 
