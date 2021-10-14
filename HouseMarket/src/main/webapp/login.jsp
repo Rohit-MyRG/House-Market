@@ -15,20 +15,7 @@
 	
 </head>
 <body> <!-- ############################################################################# -->
-    <nav id="nav1"> <!-- Nav bar starts here-->
-		<input type="checkbox" id="check" onclick="ShowHideDiv(this)">
-		<label for="check" class="checkbtn">
-			<i class="fas fa-bars"></i>
-		</label>
-		<label class="logo" style="float:left;">House Market</label>
-		<ul>
-			<li><a href="index.jsp">Home</a></li>
-			<li><a href="AddProperty.html">For Property Owners</a></li>
-			<li><a href="login.jsp">Login | Sign up</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Feedback</a></li>
-		</ul>
-    </nav> <!--navbar ends here-->
+    <%@ include file="html/navigationBar.html" %>
     
     
 	<section>	<!--login and registration form Section starts here-->
@@ -39,6 +26,12 @@
 </body> <!-- ############################################################################# -->
 
 	<style>
+		section{
+			background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)),url("images/HomeHouse.jpg");
+			background-position: 10% 50%;
+			background-size: cover;
+			height: calc(100vh - 45px);	
+		}
 		@media (max-width: 986px){
 			nav ul{
 				background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("images/House3.jpg") no-repeat;
