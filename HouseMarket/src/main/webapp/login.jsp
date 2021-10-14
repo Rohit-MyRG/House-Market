@@ -18,8 +18,10 @@
     <%@ include file="html/navigationBar.html" %>
     
     
-	<section>	<!--login and registration form Section starts here-->
-	<%@ include file="html/loginForm.html" %>
+	<section>	<!--Section starts here-->
+	
+		<!-- login and registration form-->
+		<%@ include file="html/loginForm.html" %>
 	
 	</section>
 
