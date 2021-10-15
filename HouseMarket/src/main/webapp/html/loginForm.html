@@ -5,36 +5,251 @@
                 <button type="button" class="toggle-btn" onclick="login()">Log In</button>
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
-            <form action="" class="input-group" id="login">
-                <input type="text" class="input-field" placeholder="Email Id" required>
-                <input type="text" class="input-field" placeholder="Password" required>
-                <input type="checkbox" class="check-box"><span>Remember Password</span>
-                <button type="submit" class="submit-btn">Log In</button>
+            <form action="#" class="input-group" id="login" name="log_form">
+                <input type="email" name="email" class="input-field fsize-100" placeholder="Email Id" required>
+                <input type="text" name="password" class="input-field fsize-100" placeholder="Password" required>
+                
+                <input type="checkbox" class="check-box"><span class="checkbox">Remember Password</span>
+                <button type="submit" class="submit-btn fsize-100">Log In</button>
             </form>
-            <form action="" class="input-group" id="register">
-                <input type="text" class="input-field" placeholder="Name" required>
-                <input type="text" class="input-field" placeholder="Mobile" required>
-                <input type="email" class="input-field" placeholder="Email" required>
-                <input type="text" class="input-field" placeholder="Password" required>
-                <input type="checkbox" class="check-box"><span>I agree to the terms & conditions.</span>
-                <button type="submit" class="submit-btn">Register</button>
+            <div class="input-group" id="register">
+            <form name="reg_form">
+                <input type="text" name="name" class="input-field fsize-100" placeholder="Name" required>
+                <input type="number" name="mobile" class="input-field fsize-100" placeholder="Mobile" required>
+                <input type="email" name="email_id" class="input-field fsize-100" placeholder="Email" required>
+                <input type="password" name="password" class="input-field fsize-100" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number: [0-9], One special character: [@/#/$...], One uppercase letter: [A-Z], One lowercase letter: [a-z], and between 8 to 15 characters">
+                <input type="password" name="confirm_password" class="input-field fsize-100" placeholder="Confirm Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password Must contain at least one number: [0-9], One special character: [@/#/$...], One uppercase letter: [A-Z], One lowercase letter: [a-z], and between 8 to 15 characters">
+			</form>
+                <button type="submit" class="submit-btn fsize-100" onclick="verify_email()" style="margin-top:15px;">Verify email</button>
+            </div>
+            <form action="" class="input-group" id="signup">
+                <h2 style="padding-bottom:20px; font-weight: lighter;">Verify email address</h2>
+				<p style='font-family: "Times New Roman", Times, serif; font-size:90%;'>To verify your email, we've sent a One Time Password (OTP)
+				 	to <span style='font-family: "Times New Roman", Times, serif; color:rgb(80, 139, 248);' id="email_otp"></span></p>
+				 	
+                <input type="text" class="input-field fsize-100" placeholder="Enter OTP" style="margin-top:20px;" required>
+                
+                <input type="checkbox" class="check-box"><span class="checkbox">I agree to the terms & conditions.</span>
+                <button type="submit" class="submit-btn fsize-100">Verify</button>
             </form>
         </div>
     </div>
+    <!-- ########################################################### -->
     <script>
         var x = document.getElementById("login");
         var y = document.getElementById("register");
         var z = document.getElementById("btn");
+        
+        var verify = document.getElementById("signup");
 
         function register(){
             x.style.left = "-400px";
             y.style.left = "30px";
             z.style.left = "110px";
+            verify.style.left = "430px";
         }
         function login(){
             x.style.left = "30px";
             y.style.left = "450px";
             z.style.left = "0px";
+            verify.style.left = "430px";
         }
-
+		function verify_email(){
+			if(validate()){
+				var emailid = document.reg_form.email_id.value;
+				document.getElementById("email_otp").innerHTML = emailid;
+				verify.style.left = "30px";
+				y.style.left = "-450px";
+			}
+		}
+		
+		function validate(){
+			var name = (document.reg_form.name.value).trim();
+			var mobile = (document.reg_form.mobile.value).trim();
+			var email_id = (document.reg_form.email_id.value).trim();
+			var password = (document.reg_form.password.value).trim();
+			var confirm_password = (document.reg_form.confirm_password.value).trim();
+			if(name==null || name==""){
+				alert("Please enter name"); document.reg_form.name.focus(); return false;
+			}
+			if(name.length >70 || name.length <3){
+				alert("Name length should be 3 to 70 characters");
+				document.reg_form.name.focus(); return false;
+			}
+			
+			if(mobile.length != 10){
+				alert("Length of mobile no. should be 10"); document.reg_form.mobile.focus(); return false;
+			}
+			var phoneno = /^\d{10}$/;
+			if(!(mobile.match(phoneno))){
+				alert("Mobile number should be number only"); document.reg_form.mobile.focus(); return false;
+			}
+			
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if(!(email_id.match(mailformat))){
+				alert("Please enter valid email"); document.reg_form.email_id.focus(); return false;
+			}
+			
+			var pass = document.reg_form.password.value;
+			var confirm_pass = document.reg_form.confirm_password.value;
+			var pass_format=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+			if(!(pass.match(pass_format))){
+				alert("Password Must contain at least one number: [0-9],\nOne special character: [@/#/$...],\nOne uppercase letter: [A-Z],\nOne lowercase letter: [a-z],\nand size between 8 to 15 characters");
+				return false;
+			}else if(confirm_pass!=pass){
+				alert("Confirmation password does not match. :("); return false;
+			}
+			
+			return true;
+		}
+		var pass = document.reg_form.password;
+		pass.onkeyup = function() 
+		{
+			var pass_format=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+			if(!(pass.value.match(pass_format))){
+				  document.reg_form.password.style = "border-bottom: 2px solid red;";
+			}else{
+		  		document.reg_form.password.style = "border-bottom: 2px solid green;";
+		  	}		  
+		} 
+		var confirm_pass = document.reg_form.confirm_password;
+		confirm_pass.onkeyup = function()
+		{
+			var pass_format=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+			if(!(confirm_pass.value.match(pass_format))){
+				  document.reg_form.confirm_password.style = "border-bottom: 2px solid red;";
+			}else
+			if(confirm_pass.value!=pass.value){
+				document.reg_form.confirm_password.style = "border-bottom: 2px solid red;";
+			}else{
+		  		document.reg_form.confirm_password.style = "border-bottom: 2px solid green;";
+		  	}		  
+		}
+		
+		
     </script>
+    <!-- ########################################################### -->
+    <style>
+.fsize-100{
+    font-size:100%;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.hero{
+    height: calc(100vh - 45px);
+    width: 100%;
+    /* background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("HomeHouse.jpg"); */
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.form-box{
+    width: 320px;
+    height: 420px;
+    position: relative;
+    margin: 5% auto;
+    background: #fff;
+    padding: 5px;
+    overflow: hidden;
+}
+.button-box{
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+}
+.toggle-btn{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+#btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border-radius: 30px;
+    transition: .5s;
+}
+.input-group{
+    top: 180px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+.input-field{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    background: transparent;
+    outline: none;
+}
+.submit-btn{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+.check-box{
+    margin: 30px 10px 30px 0;
+}
+span.checkbox{
+    color: #777;
+    font-size: 12px;
+    bottom: 68px;
+    position: absolute;
+}
+#login{
+    left: 30px;
+}
+#register{
+    left: 430px;
+    top: 100px;
+}
+#signup{
+	left: 430px;
+	top: 100px;
+}
+
+@media (max-width: 460px){
+    .form-box{
+        width: 90%;
+    }
+    .input-group{
+        width: 80%;
+    }
+}
+
+
+/* Hide Arrows From Input Number: Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*Hide Arrows From Input Number: Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+    
+    </style>

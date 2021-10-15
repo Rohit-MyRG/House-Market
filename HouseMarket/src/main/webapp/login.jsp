@@ -10,7 +10,7 @@
 	<title>Login Page</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" type="text/css">
 	
-	<link rel="stylesheet" type="text/css" href="css/loginFormStyle.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="css/loginFormStyle.css"/> -->
 	<link rel="stylesheet" type="text/css" href="css/navbar.css" />
 	
 </head>
@@ -46,6 +46,7 @@
 			}
 		}
 	</style>
+	
 	<script type="text/javascript">
 		/* This function is helps to hide login form and show "nav ul" when "nav checkbtn" is checked
 		else show login form and left:-100% "nav ul"*/
