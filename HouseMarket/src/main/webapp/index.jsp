@@ -45,6 +45,10 @@
 
 </body>
 <style>
+	nav{
+		/* position: fixed; */
+  		top: 0;
+	}
 	section{
 		background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)),url("images/HomeHouse.jpg");
 		background-position: 10% 50%;
