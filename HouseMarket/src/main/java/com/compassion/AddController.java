@@ -12,17 +12,17 @@ import com.compassion.service.AddService;
 @Controller
 public class AddController {
 	
-	@RequestMapping("/add")
-	public ModelAndView add(HttpServletRequest request, HttpServletResponse response) {
-		int a = Integer.parseInt(request.getParameter("t1"));
-		
-		AddService as = new AddService();
-		a = as.add(a);
-		
-		System.out.println("\n\n\nHello Rohit\n\n\n"+a);
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("show.jsp");
-		mv.addObject("result", a);
-		return mv;
+	@RequestMapping("/log")
+	public String add(HttpServletRequest request, HttpServletResponse response) {
+		/*
+		 * int a = Integer.parseInt(request.getParameter("t1"));
+		 * 
+		 * AddService as = new AddService(); a = as.add(a);
+		 * 
+		 * System.out.println("\n\n\nHello Rohit\n\n\n"+a); ModelAndView mv = new
+		 * ModelAndView(); mv.setViewName("show.jsp"); mv.addObject("result", a); return
+		 * mv;
+		 */
+		return "index.jsp";
 	}
 }
