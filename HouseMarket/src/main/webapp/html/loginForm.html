@@ -22,12 +22,12 @@
 			</form>
                 <button type="submit" class="submit-btn fsize-100" onclick="verify_email()" style="margin-top:15px;">Verify email</button>
             </div>
-            <form action="" class="input-group" id="signup">
+            <form onsubmit="return checkotp();" action="index.jsp" class="input-group" id="signup">
                 <h2 style="padding-bottom:20px; font-weight: lighter;">Verify email address</h2>
 				<p style='font-family: "Times New Roman", Times, serif; font-size:90%;'>To verify your email, we've sent a One Time Password (OTP)
 				 	to <span style='font-family: "Times New Roman", Times, serif; color:rgb(80, 139, 248);' id="email_otp"></span></p>
 				 	
-                <input type="text" class="input-field fsize-100" placeholder="Enter OTP" style="margin-top:20px;" required>
+                <input type="text" id="uOTP" class="input-field fsize-100" placeholder="Enter OTP" style="margin-top:20px;" required>
                 
                 <input type="checkbox" class="check-box"><span class="checkbox">I agree to the terms & conditions.</span>
                 <button type="submit" class="submit-btn fsize-100">Verify</button>
@@ -54,12 +54,42 @@
             z.style.left = "0px";
             verify.style.left = "430px";
         }
+        function checkotp(){
+        	var otp = document.getElementById("uOTP").value;
+        	var http = new XMLHttpRequest();
+		    http.open("POST", "http://localhost:8080/HouseMarket/msgSender.jsp", true);
+		    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		    var params = "param1=" +otp+"&form=check";
+		    http.send(params);
+		    http.onload = function() {
+		        var a = (http.responseText).trim();
+		        if(a=="True"){
+		        	alert("Registration and login successfully...");
+		        	window.location.replace("http://localhost:8080/HouseMarket/");
+		        	return true;
+		        }else if(a=="False"){
+		        	alert("Sorry OTP does not match, Please enter valid OTP");
+		        }else{	alert("Something went wrong!\n Please try again or report your problem");	}
+		    }
+        	return false;
+        }
 		function verify_email(){
 			if(validate()){
 				var emailid = document.reg_form.email_id.value;
 				document.getElementById("email_otp").innerHTML = emailid;
-				verify.style.left = "30px";
+				
+				var http = new XMLHttpRequest();
+			    http.open("POST", "http://localhost:8080/HouseMarket/msgSender.jsp", true);
+			    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			    var params = "param1=" + emailid+"&form=send";
+			    http.send(params);
+			    http.onload = function() {
+			        alert((http.responseText).trim());
+			    } 
+			    
+		        verify.style.left = "30px";
 				y.style.left = "-450px";
+			    /**/
 			}
 		}
 		
