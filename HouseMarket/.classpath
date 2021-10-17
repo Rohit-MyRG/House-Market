@@ -36,5 +36,7 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/rgrd1/Downloads/mailactivation (1)/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/rgrd1/Downloads/mailactivation (1)/mail.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
