@@ -33,6 +33,12 @@
 	
 </head>
 <body>
+	<%
+		if(session.getAttribute("username")==null){
+			response.sendRedirect("login.jsp");
+		}
+	%>
+
 	<!-- This is navigation bar HTML file. -->
     <%@ include file="html/navigationBar.html" %>
     
