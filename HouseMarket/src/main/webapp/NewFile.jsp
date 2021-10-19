@@ -8,9 +8,7 @@
 </head>
 <body>
 <%
-	if(session.getAttribute("username")==null){
-		response.sendRedirect("login.jsp");
-	}
+getServletContext().getRequestDispatcher("/rohit").forward(request, response);
 
 %>
      

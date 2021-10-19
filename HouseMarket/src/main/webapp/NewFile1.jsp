@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="log">
+<form action="NewFile.jsp">
 
 <input type="text">
 
