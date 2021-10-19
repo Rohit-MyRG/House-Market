@@ -15,6 +15,13 @@
 	
 </head>
 <body> <!-- ############################################################################# -->
+
+	<%
+		if(session.getAttribute("username")!=null){
+			getServletContext().getRequestDispatcher("/logout").forward(request, response);
+		}
+	%>
+
     <%@ include file="html/navigationBar.html" %>
     
     
