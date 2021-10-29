@@ -1,0 +1,578 @@
+
+    <div class="property-container">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="fun_property()">Property Details</button>
+                <button type="button" class="toggle-btn" onclick="fun_locality()">Locality Details</button>
+                <button type="button" class="toggle-btn" onclick="fun_rental()">Rental Details</button>
+                <button type="button" class="toggle-btn" onclick="fun_additional()">Amenities</button>
+                <button type="button" class="toggle-btn" onclick="fun_gallery()">Gallery</button>
+                <button type="button" class="toggle-btn" onclick="fun_schedule()">Schedule</button>
+            </div>
+            
+            <script type="text/javascript">
+			function add_property_details(){
+				var apartment_type = (document.property_details.apartment_type.value).trim();
+				var BHK_type = (document.property_details.BHK_type.value).trim();
+				var floor = (document.property_details.floor.value).trim();
+				var total_floor = (document.property_details.total_floor.value).trim();
+				var property_age = (document.property_details.property_age.value).trim();
+				var facing = (document.property_details.facing.value).trim();
+				var property_size = (document.property_details.property_size.value).trim();
+				
+				var http = new XMLHttpRequest();
+			    http.open("POST", "http://localhost:8080/HouseMarket/add_property_details.jsp", true);
+			    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			    var params = "form=property_details"+
+			    			 "&apartment_type="+apartment_type+
+			    			 "&BHK_type="+BHK_type+
+			    			 "&floor="+floor+
+			    			 "&total_floor="+total_floor+
+			    			 "&property_age="+property_age+
+			    			 "&facing="+facing+
+			    			 "&property_size="+property_size;
+			    http.send(params);
+			    http.onload = function() {
+			    	var answer = (http.responseText).trim();
+			    	if(answer=="Ok"){
+			        	alert("Data Saved successfully...");
+			        	fun_locality()
+			    	}else{
+			        	alert(answer);
+			    	}
+			    }
+				
+			}
+			
+			function add_locality_details(){
+				var state = (document.locality_details.state.value).trim();
+				var district = (document.locality_details.district.value).trim();
+				var locality = (document.locality_details.locality.value).trim();
+				var area = (document.locality_details.area.value).trim();
+				
+				var http = new XMLHttpRequest();
+			    http.open("POST", "http://localhost:8080/HouseMarket/add_property_details.jsp", true);
+			    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			    var params = "form=locality_details"+
+			    			 "&state="+state+
+			    			 "&district="+district+
+			    			 "&locality="+locality+
+			    			 "&area="+area;
+			    http.send(params);
+			    http.onload = function() {
+			    	var answer = (http.responseText).trim();
+			    	if(answer=="Ok"){
+			        	alert("Data Saved successfully...");
+			        	fun_rental();
+			    	}else{
+			        	alert(answer);
+			    	}
+			    }
+			}
+			
+			function add_rental_details(){
+				var look_for = (document.rental_details.look_for.value).trim();
+				var rent = (document.rental_details.rent.value).trim();
+				var deposit = (document.rental_details.deposit.value).trim();
+				var monthly_maintainance = (document.rental_details.monthly_maintainance.value).trim();
+				var prefered_tenants = (document.rental_details.prefered_tenants.value).trim();
+				var furnishing = (document.rental_details.furnishing.value).trim();
+				var parking = (document.rental_details.parking.value).trim();
+				var available_from = (document.rental_details.available_from.value);
+				var description = (document.rental_details.description.value).trim();
+				
+				var http = new XMLHttpRequest();
+			    http.open("POST", "http://localhost:8080/HouseMarket/add_property_details.jsp", true);
+			    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			    var params = "form=rental_details"+
+			    			 "&look_for="+look_for+
+			    			 "&rent="+rent+
+			    			 "&deposit="+deposit+
+			    			 "&monthly_maintainance="+monthly_maintainance+
+			    			 "&prefered_tenants="+prefered_tenants+
+			    			 "&furnishing="+furnishing+
+			    			 "&parking="+parking+
+			    			 "&available_from="+available_from+
+			    			 "&description="+description;
+			    http.send(params);
+			    http.onload = function() {
+			    	var answer = (http.responseText).trim();
+			    	if(answer=="Ok"){
+			        	alert("Data Saved successfully...");
+			        	fun_additional();
+			    	}else{
+			        	alert(answer);
+			    	}
+			    }
+			}
+			
+			function add_additional_details(){
+				var bathroom = (document.additional_details.bathroom.value).trim();
+				var Balcony = (document.additional_details.Balcony.value).trim();
+				var water_supply = (document.additional_details.water_supply.value).trim();
+				var gym = (document.additional_details.gym.value).trim();
+				var non_veg = (document.additional_details.non_veg.value).trim();
+				var gated_security = (document.additional_details.gated_security.value).trim();
+				var other_facility = (document.additional_details.other_facility.value).trim();
+				
+				
+				var http = new XMLHttpRequest();
+			    http.open("POST", "http://localhost:8080/HouseMarket/add_property_details.jsp", true);
+			    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			    var params = "form=additional_details"+
+			    			 "&bathroom="+bathroom+
+			    			 "&Balcony="+Balcony+
+			    			 "&water_supply="+water_supply+
+			    			 "&gym="+gym+
+			    			 "&non_veg="+non_veg+
+			    			 "&gated_security="+gated_security+
+			    			 "&other_facility="+other_facility;
+			    http.send(params);
+			    http.onload = function() {
+			    	var answer = (http.responseText).trim();
+			    	if(answer=="Ok"){
+			        	alert("Data Saved successfully...");
+			        	fun_gallery();
+			    	}else{
+			        	alert(answer);
+			    	}
+			    }
+			}
+			
+			function add_gallery(){
+				var photo = (document.gallery.photo.value);
+				
+				var http = new XMLHttpRequest();
+			    http.open("POST", "http://localhost:8080/HouseMarket/add_property_details.jsp", true);
+			    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			    var params = "form=gallery"+
+			    			 "&photo="+photo;
+			    http.send(params);
+			    http.onload = function() {
+			    	var answer = (http.responseText).trim();
+			    	if(answer=="Ok"){
+			        	alert("Data Saved successfully...");
+			        	fun_schedule()
+			    	}else{
+			        	alert(answer);
+			    	}
+			    }
+			}
+			
+			function add_schedule(){
+				var starttime = (document.schedule.starttime.value).trim();
+				var endtime = (document.schedule.endtime.value).trim();
+				var weekday = (document.schedule.weekday.value).trim();
+				
+				var http = new XMLHttpRequest();
+			    http.open("POST", "http://localhost:8080/HouseMarket/add_property_details.jsp", true);
+			    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			    var params = "form=schedule"+
+			    			 "&starttime="+starttime+
+			    			 "&endtime="+endtime+
+			    			 "&weekday="+weekday;
+			    http.send(params);
+			    http.onload = function() {
+			    	var answer = (http.responseText).trim();
+			    	if(answer=="Ok"){
+			        	alert("Congractulations :) \nAll Data Saved successfully & Your property has been published...");
+			        	//fun_rental();
+			    	}else{
+			        	alert(answer);
+			    	}
+			    }
+			}
+	</script>
+            <form class="input-group" id="property-details" name="property_details">
+                <div style="margin-left: 10%;">
+                <h2>Property Details</h2>
+                
+                <select name="apartment_type" id="apartment-type" class="input-field" required>
+                    <option value="select">Apartment Type</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Independent-house-villa">Independent House/Villa</option>
+                    <option value="Gated-community-villa">Gated Community Villa</option>
+                </select>
+
+                <select name="BHK_type" id="BHK-type" class="input-field" required>
+                    <option value="select">BHK Type</option>
+                    <option value="Single Room">Single Room</option>
+                    <option value="Double Room">Double Room</option>
+                    <option value="1RK">1RK</option>
+                    <option value="1BHK">1BHK</option>
+                    <option value="2BHK">2BHK</option>
+                    <option value="3BHK">3BHK</option>
+                    <option value="4BHK">4BHK</option>
+                    <option value="5BHK">5BHK</option>
+                </select></br>
+
+                <select name="floor" id="floor" class="input-field" required>
+                    <option value="select">Floor</option>
+                    <%
+    					for(int i=1; i<100; i++){
+    				%>
+    						<option value="<%=i %>"><%=i %></option>
+    				<%
+    					}
+    				%>
+                </select>
+
+                <select name="total_floor" id="total-floor" class="input-field" required>
+                    <option value="select">Total Floor</option>
+                    <%
+    					for(int i=1; i<100; i++){
+    				%>
+    						<option value="<%=i %>"><%=i %></option>
+    				<%
+    					}
+    				%>
+                </select></br>
+
+                <select name="property_age" id="property-age" class="input-field" required>
+                    <option value="select">Propert Age</option>
+                    <option value="1">Less than a year</option>
+                    <option value="1-3">1-3</option>
+                    <option value="3-5">3-5</option>
+                    <option value="5-7">5-7</option>
+                    <!-- <option value="7-9">7-9</option> -->
+                </select></br>
+
+                <select name="facing" id="facing" class="input-field">
+                    <option value="select">Facing</option>
+                    <option value="East">East</option>
+                    <option value="West">West</option>
+                    <option value="North">North</option>
+                    <option value="South">South</option>
+                </select></br>
+
+                <input type="text" name="property_size" id="property-size" class="input-field" placeholder="Property Sizee: i.e.in sqft" required></br>
+            </div>
+                <div class="center-btn">
+                    <button type="button" id="add_property_details_btn" onclick="add_property_details()" class="submit-btn">Save & Continue</button>
+                </div>
+            </form>
+
+            <form class="input-group" id="locality-details" name="locality_details"> 
+                <div style="margin-left: 10%;">
+                <h2>Locality Details</h2>
+
+                        <div style="text-align:center">&nbsp;&nbsp;
+                <select id="inputState" name="state" class="input-field" onchange="changeState()" data-inline = "true" required>
+					<option value="select">--select State--</option>
+					<option value="Andra Pradesh">Andra Pradesh</option>
+					<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+					<option value="Assam">Assam</option>
+					<option value="Bihar">Bihar</option>
+					<option value="Chhattisgarh">Chhattisgarh</option>
+					<option value="Goa">Goa</option>
+					<option value="Gujarat">Gujarat</option>
+					<option value="Haryana">Haryana</option>
+					<option value="Himachal Pradesh">Himachal Pradesh</option>
+					<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+					<option value="Jharkhand">Jharkhand</option>
+					<option value="Karnataka">Karnataka</option>
+					<option value="Kerala">Kerala</option>
+					<option value="Madya Pradesh">Madya Pradesh</option>
+					<option value="Maharashtra">Maharashtra</option>
+					<option value="Manipur">Manipur</option>
+					<option value="Meghalaya">Meghalaya</option>
+					<option value="Mizoram">Mizoram</option>
+					<option value="Nagaland">Nagaland</option>
+					<option value="Orissa">Orissa</option>
+					<option value="Punjab">Punjab</option>
+					<option value="Rajasthan">Rajasthan</option>
+					<option value="Sikkim">Sikkim</option>
+					<option value="Tamil Nadu">Tamil Nadu</option>
+					<option value="Telangana">Telangana</option>
+					<option value="Tripura">Tripura</option>
+					<option value="Uttaranchal">Uttaranchal</option>
+					<option value="Uttar Pradesh">Uttar Pradesh</option>
+					<option value="West Bengal">West Bengal</option>
+					<option disabled style="background-color:#aaa; color:#fff">UNION Territories</option>
+					<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+					<option value="Chandigarh">Chandigarh</option>
+					<option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+					<option value="Daman and Diu">Daman and Diu</option>
+					<option value="Delhi">Delhi</option>
+					<option value="Lakshadeep">Lakshadeep</option>
+					<option value="Pondicherry">Pondicherry</option>
+	  			</select>
+
+                <select id="inputDistrict" name="district" class="input-field" data-inline = "true" required>
+					<option value="">--select District/City--</option>
+	  			</select></br>
+                        </div> 
+                <label for="locality">Enter your locality : </label>
+                <input type="text" id="locality" name="locality" class="input-field" style="width: 66%;" placeholder="Enter location name" required> </br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="area">Street/Area</label>
+                <input type="text" id="area" name="area" class="input-field" placeholder="e.g.Manjari Raod" required> </br>
+                    </div>
+                <div class="center-btn">
+                    <button type="button" class="submit-btn">Back</button>
+                    <button type="button" class="submit-btn" onclick="add_locality_details()" id="locality_details_btn">Save & Continue</button>
+                </div>
+            </form>
+
+            <form class="input-group" id="rental-details" name="rental_details">
+                <div style="margin-left: 10%;">
+                <h2>Rental Details</h2>
+                <label>Property available for</label>
+                <input type="radio" name="look_for" id="only-rent" class="chk-input-field" value="Only rent" checked required><label for="only-rent">Only rent</label> 
+                <input type="radio" name="look_for" id="only-lease" class="chk-input-field" value="Only Lease" required><label for="only-lease">Only Lease</label>
+
+                    </br></br>
+                
+                <label for="rent">Expected-Rent</label>
+                <input type="text" id="rent" name="rent" class="input-field" placeholder="Enter Amount" required>
+
+                <label for="deposit">Expected-Deposit</label>
+                <input type="text" id="deposit" name="deposit" class="input-field" placeholder="Enter Amount" required>
+                <!-- <p><input type="checkbox" class="chk-input-field" id="negotiable"><label for="negotiable">Negotiable</label></p> -->
+
+                    </br>
+
+                <select name="monthly_maintainance" id="monthly-maintainance" class="input-field" required>
+                    <option value="select">Monthly Maintainance</option>
+                    <option value="Maintainance-inlcuded">maintainance-inlcuded</option>
+                    <option value="Maintainance-extra">maintainance-extra</option>
+                </select>
+
+                <select name="prefered_tenants" id="prefered-tenants" class="input-field" required>
+                    <option value="select">Prefered Tenants</option>
+                    <option value="Dosent-matter">Dosen't Matter</option>
+                    <option value="Family">Family</option>
+                    <option value="Bachelore">Bachelore</option>
+                    <option value="Company">Company</option>
+                </select>
+
+                    </br>
+
+                <select name="furnishing" id="furnishing" class="input-field" required>
+                    <option value="select">Select Furnishing</option>
+                    <option value="Fully-furnishing">Fully Furnished</option>
+                    <option value="Semi-furnished">Semi Furnished</option>
+                    <option value="Unfurnished">Unfurnished</option>
+                </select>
+
+                <select name="parking" id="parking" class="input-field" required>
+                    <option value="select">Select Parking</option>
+                    <option value="Bike">Bike</option>
+                    <option value="Car">Car</option>
+                    <option value="Both">Both</option>
+                    <option value="None">None</option>
+                </select>
+
+                    </br>
+
+                <label for="available-from">Available From</label>
+                <input type="date" id="available-from"  name="available_from" class="input-field" required>
+
+
+                    </br>
+
+                <label for="description">Description</label>
+                <input type="area" name="description" class="input-field" placeholder="Write a few lines about your property">
+
+                    </br>
+                </div>
+                <div class="center-btn">
+                    <button type="button" class="submit-btn">Back</button>
+                    <button type="button" class="submit-btn" onclick="add_rental_details()" >Save & Continue</button>
+                </div>
+            </form>
+
+            <form class="input-group" id="additional-details" name="additional_details">
+                <div style="margin-left: 10%;">
+                <h2>Provide Additional Details</h2>
+
+                <input type="text" name="bathroom" id="bathroom" class="input-field" placeholder="Bathroom i.e. 1" required>
+
+                <input type="text" name="Balcony" id="Balcony" class="input-field" placeholder="Balcony i.e. 1" required>
+
+                    </br>
+
+                <select name="water_supply" id="water-supply" class="input-field" required>
+                    <option value="select">Water supply</option>
+                    <option value="Corporation">Corporation</option>
+                    <option value="Borewell">Borewell</option>
+                    <option value="Both">Both</option>
+                </select>
+
+                <select name="gym" id="gym"class="input-field" required>
+                    <option value="select">Gym</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <select name="non_veg" id="non-veg" class="input-field" required>
+                    <option value="select">Non-Veg Allowed</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <select name="gated_security" id="gated-security" class="input-field" required>
+                    <option value="select">Gated-Security</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select><br>
+                
+                <label for="other_facilities">Description</label>
+                <input type="area" name="other_facility" class="input-field" placeholder="Describe here if you have other facilities." style="width:60%">
+                
+
+                    </br></br><hr></br>
+
+                <h4>Select the available amenities</h4>
+                    <div class="chk-div">
+                <input type="checkbox" name="" id="lift" class="chk-input-field"  ><label for="lift">Lift</label></br>
+                <input type="checkbox" name="" id="internet-service" class="chk-input-field"  ><label for="internet-service">Internet Service</label></br>
+                <input type="checkbox" name="" id="air-conditioner" class="chk-input-field"  ><label for="air-conditioner">Air Conditioner</label></br>
+                <input type="checkbox" name="" id="club-house" class="chk-input-field"  ><label for="club-house">Club House</label></br>
+                <input type="checkbox" name="" id="intercom" class="chk-input-field"  ><label for="intercom">Intercom</label></br>
+                <input type="checkbox" name="" id="swimming-pool" class="chk-input-field"  ><label for="swimming-pool">Swimming Pool</label></br>
+                <input type="checkbox" name="" id="children-play-area" class="chk-input-field"  ><label for="children-play-area">Children Play Area</label></br>
+                <input type="checkbox" name="" id="fire-safety" class="chk-input-field"  ><label for="fire-safety">Fire-Safety</label></br>
+                <input type="checkbox" name="" id="servant-room" class="chk-input-field"  ><label for="servant-room">Servant-Room</label></br>
+                    </div><div class="chk-div">
+                <input type="checkbox" name="" id="shoping-center" class="chk-input-field"  ><label for="shoping-center">Shopping Center</label></br>
+                <input type="checkbox" name="" id="gas-pipeline" class="chk-input-field"  ><label for="gas-pipeline">Gas Pipeline</label></br>
+                <input type="checkbox" name="" id="park" class="chk-input-field"  ><label for="park">Park</label></br>
+                <input type="checkbox" name="" id="rain-water-harvesting" class="chk-input-field"  ><label for="rain-water-harvesting">Rain Water Harvesting</label></br>
+                <input type="checkbox" name="" id="sewage-treatment-plant" class="chk-input-field"  ><label for="sewage-treatment-plant">Sewage Treatment Plant</label></br>
+                <input type="checkbox" name="" id="house-keeping" class="chk-input-field"  ><label for="house-keeping">House Keeping</label></br>
+                <input type="checkbox" name="" id="power-backup" class="chk-input-field"  ><label for="power-backup">Power Backup</label></br>
+                <input type="checkbox" name="" id="visitor-parking" class="chk-input-field"  ><label for="visitor-parking">Visitor Parking</label></br>
+                        </div>
+                    </div>
+
+                <div class="center-btn">
+                    <button type="button" class="submit-btn">Back</button>
+                    <button type="button" class="submit-btn" onclick="add_additional_details()">Save & Continue</button>
+                </div>
+            </form>
+            
+			
+            
+            <form action="" class="input-group" id="gallery" name="gallery">
+                    <div style="margin-left: 10%;">
+                <h2>Upload Photos</h2>    
+                <input type="file" name="photo" id="" class="input-field">
+                    </div>
+                <div class="center-btn">
+                    <button type="button" class="submit-btn">Back</button>
+                    <button type="button" class="submit-btn" onclick="add_gallery()">Save & Continue</button>
+                </div>
+            </form>
+            
+            
+            
+            <form action="add_property_details.jsp" class="input-group" id="schedule" name="schedule">
+                <div style="margin-left: 10%;">
+                <h2>Make house visits hassle-free by providing us your availability</h2></br></br>
+
+                <h4>Select time Schedule</h4>
+                <label for="starttime">Start time : </label>
+                <input type="time" name="starttime" id="starttime" class="input-field" required>
+                <label for="endtime">End time : </label>
+                <input type="time" name="endtime" id="endtime" class="input-field" required>
+
+                    </br></br>
+                <label>Availability: </label>
+                <input type="radio" value="Everyday" name="weekday" id="Everyday" class="chk-input-field" required><label for="Everyday">Everyday</label>
+                <input type="radio" value="Weekday" name="weekday" id="Weekday" class="chk-input-field" required><label for="Weekday">Weekday</label>
+                <input type="radio" value="Weekend" name="weekday" id="Weekend" class="chk-input-field" required><label for="Weekend">Weekend</label>
+                    </div></br></br>
+                <div class="center-btn">
+                    <button type="button" class="submit-btn">Back</button>
+                    <button type="submit" class="submit-btn" onclick="add_schedule()">Submit All Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    <script>
+        var p = document.getElementById("property-details");
+        var l = document.getElementById("locality-details");
+        var r = document.getElementById("rental-details");
+        var a = document.getElementById("additional-details");
+        var g = document.getElementById("gallery");
+        var s = document.getElementById("schedule");
+        var z = document.getElementById("btn");
+
+        function fun_property()
+        {
+            p.style.left = "20px";
+            l.style.left = "1000px";
+            r.style.left = "2000px";
+            a.style.left = "3000px";
+            g.style.left = "4000px";
+            s.style.left = "5000px";
+            z.style.left = "0px";
+            z.style.width = "150px";
+        }
+        function fun_locality()
+        {
+            p.style.left = "-1000px";
+            l.style.left = "20px";
+            r.style.left = "1000px";
+            a.style.left = "2000px";
+            g.style.left = "3000px";
+            s.style.left = "4000px";
+            z.style.left = "155px";
+            z.style.width = "150px";
+        }
+        function fun_rental()
+        {
+            p.style.left = "-2000px";
+            l.style.left = "-1000px";
+            r.style.left = "20px";
+            a.style.left = "1000px";
+            g.style.left = "2000px";
+            s.style.left = "3000px";
+            z.style.left = "308px";
+            z.style.width = "150px";
+        }
+        function fun_additional()
+        {
+            p.style.left = "-3000px";
+            l.style.left = "-2000px";
+            r.style.left = "-1000px";
+            a.style.left = "20px";
+            g.style.left = "1000px";
+            s.style.left = "2000px";
+            z.style.left = "450px";
+            z.style.width = "130px";
+        }
+        function fun_gallery()
+        {
+            p.style.left = "-4000px";
+            l.style.left = "-3000px";
+            r.style.left = "-2000px";
+            a.style.left = "-1000px";
+            g.style.left = "20px";
+            s.style.left = "1000px";
+            z.style.left = "565px";
+            z.style.width = "130px";
+        }
+        function fun_schedule()
+        {
+            p.style.left = "-5000px";
+            l.style.left = "-4000px";
+            r.style.left = "-3000px";
+            a.style.left = "-2000px";
+            g.style.left = "-1000px";
+            s.style.left = "20px";
+            z.style.left = "675px";
+            z.style.width = "130px";
+        }
+    </script>
+    
+    <style>
+    .form-box{
+    height: 160%;
+    }
+    
+    </style>

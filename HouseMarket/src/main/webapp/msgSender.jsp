@@ -30,7 +30,7 @@ if(form.equals("check")){
 			if(name.charAt(i)==' ')	break;
 		    s1 = s1 + name.charAt(i);
 		}
-		session.setAttribute("name",s1);
+		session.setAttribute("first_name",s1);
 		
 		request.setAttribute("name", name);
 		request.setAttribute("mobile", mobile);

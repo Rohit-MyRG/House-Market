@@ -11,7 +11,7 @@ public class MySqlConnectionProvider {
 		try{  
 			Class.forName(DRIVER);  
 			con=DriverManager.getConnection(CONNECTION_URL,USERNAME,PASSWORD);  
-		}catch(Exception e){}  
+		}catch(Exception e){ System.out.println(e); }  
 	}  
 	  
 	public static Connection getConnection(){  

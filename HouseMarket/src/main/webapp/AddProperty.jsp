@@ -1,46 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
-
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="ISO-8859-1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<title>Login Page</title>
+	<title>Add Property</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" type="text/css">
 	
-	<!-- <link rel="stylesheet" type="text/css" href="css/loginFormStyle.css"/> -->
 	<link rel="stylesheet" type="text/css" href="css/navbar.css" />
+	<link rel="stylesheet" href="css/addPropertyStyle.css">
 	
+	<script type="text/javascript" src="js/stateDist.js"> </script>
 </head>
-<body> <!-- ############################################################################# -->
+<body>
 
 	<%
-		if(session.getAttribute("username")!=null){
-			getServletContext().getRequestDispatcher("/logout").forward(request, response);
+		if(session.getAttribute("username")==null){
+			response.sendRedirect("login.jsp");
 		}
 	%>
 
+	<!-- This is navigation bar HTML file. -->
     <%@ include file="html/navigationBar.html" %>
     
-    
-    
 	<section>	<!--Section starts here-->
-	
-		<!-- login and registration form-->
-		<%@ include file="html/loginForm.html" %>
-	
+		
+		<!-- This home.html file includes search bar for finding property. -->
+		<%@ include file="html/addProperty.html" %>
+		
 	</section>
 
-</body> <!-- ############################################################################# -->
+
+
+
+
+
+
+
+
+
+</body>
 
 	<style>
 		section{
 			background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)),url("images/HomeHouse.jpg");
+			background-repeat: repeat;
 			background-position: 10% 50%;
-			background-size: cover;
-			height: calc(100vh - 45px);	
+			background-size: cover; 
+			height: calc(180vh - 45px);	
+			background-attachment: fixed;
 		}
 		@media (max-width: 986px){
 			nav ul{
@@ -51,20 +61,14 @@
 				background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('images/House2.jpg') no-repeat; 
 				background-size: cover;
 				height: calc(100vh - 45px);
+				background-attachment: fixed;
 			}
 		}
 	</style>
-	
 	<script type="text/javascript">
-		/* This function is helps to hide login form and show "nav ul" when "nav checkbtn" is checked
-		else show login form and left:-100% "nav ul"*/
-	
+		
     	function ShowHideDiv(chkNav) {
-			if(document.getElementById("nav1").offsetWidth<=986){
-		        var sec1 = document.getElementById("loginForm");
-		        var ans = chkNav.checked ? "none" : "block";
-		        setTimeout(() => { sec1.style.display = ans }, 100);
-			}
+			/* ignored: This function is defined for other pages but here it is for no occure error when checkbox checked*/
     	}
 	</script>
 

@@ -5,7 +5,7 @@
                 <button type="button" class="toggle-btn" onclick="login()">Log In</button>
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
-            <form onsubmit="return validate_login()" action="loginUser" class="input-group" id="login" name="log_form">
+            <form onsubmit="return validate_login()" method="POST" action="loginUser" class="input-group" id="login" name="log_form">
                 <input type="email" name="email" class="input-field fsize-100" placeholder="Email Id" required>
                 <input type="password" name="password" class="input-field fsize-100" placeholder="Password" required>
                 
@@ -13,7 +13,7 @@
                 <button type="submit" class="submit-btn fsize-100">Log In</button>
             </form>
             <div class="input-group" id="register">
-            <form name="reg_form">
+            <form name="reg_form" >
                 <input type="text" name="name" class="input-field fsize-100" placeholder="Name" required>
                 <input type="number" name="mobile" class="input-field fsize-100" placeholder="Mobile" required>
                 <input type="email" name="email_id" class="input-field fsize-100" placeholder="Email" required>
@@ -22,7 +22,7 @@
 			</form>
                 <button type="submit" id="verify_btn" class="submit-btn fsize-100" onclick="verify_email()" style="margin-top:15px;">Verify email</button>
             </div>
-            <form onsubmit="return checkotp();" action="index.jsp" class="input-group" id="signup">
+            <form onsubmit="return checkotp();" action="index.jsp" method="POST" class="input-group" id="signup">
                 <h2 style="padding-bottom:20px; font-weight: lighter;">Verify email address</h2>
 				<p style='font-family: "Times New Roman", Times, serif; font-size:90%;'>To verify your email, we've sent a One Time Password (OTP)
 				 	to <span style='font-family: "Times New Roman", Times, serif; color:rgb(80, 139, 248);' id="email_otp"></span></p>
