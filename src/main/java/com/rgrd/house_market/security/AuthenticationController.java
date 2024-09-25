@@ -38,7 +38,7 @@ public class AuthenticationController {
         String refreshToken = jwtTokenUtil.generateRefreshToken(userDetails.getUsername());
 
         // Return both tokens in the response
-        return ResponseEntity.ok(new AuthenticationResponse("Bearer " +jwtToken, refreshToken));
+        return ResponseEntity.ok(new AuthenticationResponse(jwtToken, refreshToken));
     }
     
     @PostMapping("/refresh")
@@ -51,7 +51,7 @@ public class AuthenticationController {
             // Generate a new access token
             String newAccessToken = jwtTokenUtil.generateToken(userDetails.getUsername(), userDetails.getName(), userDetails.getRole());
 
-            return ResponseEntity.ok(new AuthenticationResponse("Bearer " +newAccessToken, refreshToken));
+            return ResponseEntity.ok(new AuthenticationResponse(newAccessToken, refreshToken));
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Refresh Token");
         }

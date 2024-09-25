@@ -3,16 +3,12 @@ package com.rgrd.house_market.security;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -52,9 +48,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 if (jwtTokenUtil.isTokenNearExpiry(jwt)) {
                     String newToken = jwtTokenUtil.generateToken(userDetails.getUsername(), userDetails.getName(),
                             userDetails.getAuthorities().toString());
-                    response.setHeader("Authorization", "Bearer " + newToken);
+                    response.setHeader("accesstoken", newToken);
                 } else
-                    response.setHeader("Authorization", "Bearer " + jwt);
+                    response.setHeader("accesstoken", jwt);
             }
         }
         chain.doFilter(request, response);
