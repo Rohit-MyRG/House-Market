@@ -7,8 +7,21 @@
     <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-    <h1>Welcome to the Dashboard</h1>
-    <div id="property-list"></div>
+    <!-- User Profile Section -->
+    <div id="user-profile">
+        <img src="profile-pic.jpg" alt="User Profile" class="profile-pic">
+        <p>Logged in as: <span id="username">John Doe</span></p>
+        <a href="#" id="logout">Logout</a>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar-container">
+        <input type="text" id="search-bar" placeholder="Search properties..." />
+    </div>
+
+    <!-- Property List -->
+    <div id="property-list" class="property-list-container"></div>
+
     <script type="module" src="pages/DashboardPage.js"></script>
 </body>
 </html>
